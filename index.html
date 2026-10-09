@@ -82,6 +82,10 @@ const pane=guide?.querySelector('.guide-content');
 const toggle=guide?.querySelector('.guide-toggle');
 const monitor=document.querySelector(monitorSelector);
 if(!pane||!toggle||!monitor)return;
+const legacyPanel=[...document.querySelectorAll('aside')].find(el=>el.id!=='meyden-ux-guide'&&el.querySelector('strong')?.textContent?.includes('Ajouter au devis MEYDEN'));
+const cartPanel=document.querySelector('#meyden-floating-cart .mf-panel');
+if(legacyPanel&&cartPanel){legacyPanel.style.position='static';legacyPanel.style.inset='auto';legacyPanel.style.width='100%';legacyPanel.style.maxWidth='100%';legacyPanel.style.boxShadow='none';legacyPanel.style.padding='8px';legacyPanel.style.marginTop='10px';legacyPanel.style.zIndex='auto';cartPanel.appendChild(legacyPanel);}
+
 const host=document.createElement('div');host.className='meyden-av-host';
 const note=document.createElement('p');note.className='meyden-av-hint';note.textContent='Présentation audiovisuelle originale • '+hint+' La narration peut continuer lorsque vous refermez le tutoriel sur cette page.';
 const context=document.createElement('p');context.className='meyden-av-hint';context.setAttribute('aria-live','polite');
